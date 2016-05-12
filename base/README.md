@@ -6,5 +6,4 @@ Usage :
 docker run -it aphecetche/alpine-neovim-base
 ```
 
-
-
+That image should be around 25 MB.
