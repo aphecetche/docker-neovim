@@ -24,12 +24,12 @@ apk add --update-cache --virtual build-deps --no-cache \
 apk add --update-cache \
         libtermkey \
         unibilium && \
-git clone https://github.com/neovim/libvterm.git && \
+git clone --depth=1 https://github.com/neovim/libvterm.git && \
   cd libvterm && \
   make && \
   make install && \
   cd ../ && rm -rf libvterm && \
-git clone https://github.com/neovim/neovim.git nvim && \
+git clone --depth=1 https://github.com/neovim/neovim.git nvim && \
  cd nvim && \
  make && \
  make install && \
