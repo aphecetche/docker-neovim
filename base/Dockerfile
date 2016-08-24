@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.3
 
 MAINTAINER Laurent Aphecetche <laurent.aphecetche@gmail.com>
 
