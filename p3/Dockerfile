@@ -5,7 +5,7 @@ RUN apk add --update-cache --no-cache git python3 && \
     python3 -m ensurepip && \
     pip3 install --upgrade pip setuptools && \
     pip3 install neovim && \
-    git clone https://github.com/aphecetche/dotfiles.git && \
+    git clone --depth=1 https://github.com/aphecetche/dotfiles.git && \
     mkdir /root/.config && \
     mv dotfiles/config/nvim /root/.config/ && \
     ln -s /root/.config/nvim /root/.vim && \
