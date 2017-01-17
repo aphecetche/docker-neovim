@@ -24,7 +24,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Raimondi/delimitMate'
 Plug 'jlanzarotta/bufexplorer' " <leader>be,bs,bt,bv
 Plug 'Konfekt/FastFold'
-Plug 'Valloric/YouCompleteMe', { 'do' : './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe'
 
 " language-specific plugins
 
@@ -110,7 +110,7 @@ set laststatus=2 " show the satus line all the time
 " Section User Inferface {{{1
 
 " code folding settings
-set foldmethod=marker " fold based on indent
+set foldmethod=syntax " fold based on indent
 set foldnestmax=10 " deepest fold is 10 levels
 " set nofoldenable " don't fold by default
 set foldlevel=1
@@ -241,18 +241,10 @@ highlight! link ColorColumn CursorLine
 highlight! link Search airline_z
 
 augroup alice
-    " fun! SetAliRootBuildCommand(path) 
-    "     let l:path_parts = split(a:path,"/") 
-    "     let l:run = path_parts[3] 
-    "     let l:aliroot_version = path_parts[4] 
-    "     let &makeprg = "$HOME/Scripts/alice-vim-build-aliroot.sh ".l:run." ".l:aliroot_version 
-    " endfun 
-    " " <afile>:p is assumed to be /home/user/alicesw/run2[3]/aliroot-xxx/AliRoot/...
-    " autocmd BufNewFile, BufRead * / alicesw/*.cxx :call SetAliRootBuildCommand(expand("<afile>:p"))
     autocmd!
     function! FormatCppFile()
         let l:lines="all"
-        pyf /usr/local/Cellar/clang-format/2016-03-29/share/clang/clang-format.py
+        pyf /usr/share/vim/addons/syntax/clang-format.py
     endfunction
     au filetype cpp noremap <F2> :call FormatCppFile()<cr>
 augroup END

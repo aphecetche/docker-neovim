@@ -16,13 +16,17 @@ RUN cd $HOME && git clone --depth=1 https://github.com/aphecetche/dotfiles.git &
  ln -s /root/.config/nvim/init.vim /root/.vimrc && \
  git clone --depth=1 https://github.com/aphecetche/base16-shell.git /root/dotfiles/base16-shell
 
-RUN nvim --headless -c "PlugInstall! | qall! " && nvim --headless +UpdateRemotePlugins +qall 
+ENV BACKGROUND=light
+ENV THEME=default
+
+RUN nvim --headless -c "PlugInstall! | qall!" && nvim --headless +UpdateRemotePlugins +qall 
+
+RUN cd /root/.config/nvim/plugged/YouCompleteMe && ./install.py --clang-completer
 
 ADD vimrc /root/.config/nvim/init.vim
-ADD bashrc /root/.bashrc
+ADD ./ycm_extra_conf.py /root/.ycm_extra_conf.py
 
-ENV BACKGROUND=light
-ENV THEME=base16-solarized-light
+#ENV THEME=base16-solarized-light
 
 # here should remove all what's no longer needed to _run_ neovim, but was used
 # to build some of the plugins, e.g. cmake, git, curl, python-dev (?)
