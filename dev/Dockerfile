@@ -10,9 +10,9 @@ apt-get install -y neovim python-dev python-pip git
 
 RUN pip install neovim
 
-RUN git clone --depth=1 https://github.com/aphecetche/dotfiles.git && \
+RUN cd $HOME && git clone --depth=1 https://github.com/aphecetche/dotfiles.git && \
  mkdir /root/.config && \
- mv dotfiles/config/nvim /root/.config/ && \
+ mv $HOME/dotfiles/config/nvim /root/.config/ && \
  ln -s /root/.config/nvim /root/.vim && \
  ln -s /root/.config/nvim/init.vim /root/.vimrc
 
@@ -20,6 +20,8 @@ ADD vimrc /root/.config/nvim/init.vim
 ADD bashrc /root/.bashrc
 
 RUN nvim --headless -c "PlugInstall! | qall! " 
+
+RUN git clone --depth=1 https://github.com/aphecetche/base16-shell.git /root/dotfiles/base16-shell
 
 ENV BACKGROUND=light
 ENV THEME=base16-solarized

@@ -1,4 +1,4 @@
-export DOTFILES=$HOME/.dotfiles
-BASE16_SHELL="$DOTFILES/base16-shell/$THEME.$BACKGROUND.sh"
+export DOTFILES=$HOME/dotfiles
+BASE16_SHELL="$DOTFILES/base16-shell/base16-solarized.light.sh"
 source $BASE16_SHELL
 
