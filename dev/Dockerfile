@@ -6,7 +6,7 @@ RUN apt-get update && \
 apt-get install -y software-properties-common && \
 add-apt-repository -y ppa:neovim-ppa/unstable && \
 apt-get update && \
-apt-get install -y neovim python-dev python-pip git
+apt-get install -y neovim python-dev python-pip git cmake
 
 RUN pip install neovim
 
@@ -24,7 +24,7 @@ RUN nvim --headless -c "PlugInstall! | qall! "
 RUN git clone --depth=1 https://github.com/aphecetche/base16-shell.git /root/dotfiles/base16-shell
 
 ENV BACKGROUND=light
-ENV THEME=base16-solarized
+ENV THEME=base16-solarized-light
 
 ENTRYPOINT /usr/bin/nvim
 
