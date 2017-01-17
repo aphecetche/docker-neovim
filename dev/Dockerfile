@@ -14,8 +14,9 @@ RUN cd $HOME && git clone --depth=1 https://github.com/aphecetche/dotfiles.git &
  mv $HOME/dotfiles/config/nvim /root/.config/ && \
  ln -s /root/.config/nvim /root/.vim && \
  ln -s /root/.config/nvim/init.vim /root/.vimrc && \
- git clone --depth=1 https://github.com/aphecetche/base16-shell.git /root/dotfiles/base16-shell && \
- nvim --headless -c "PlugInstall! | qall! " 
+ git clone --depth=1 https://github.com/aphecetche/base16-shell.git /root/dotfiles/base16-shell
+
+RUN nvim --headless -c "PlugInstall! | qall! " && nvim --headless +UpdateRemotePlugins +qall 
 
 ADD vimrc /root/.config/nvim/init.vim
 ADD bashrc /root/.bashrc
